@@ -1,0 +1,152 @@
+﻿@model CourseProject.Models.Course
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+<div class="card mt-3 mb-3" id="header_card">
+    <div class="card-body">
+        <h2>Kundelik.kz</h2>
+        <a href="home.html">Home</a>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <div class="container">
+                <div class="row">
+                    <div class="card-body p-3">
+                        <h5 class="card-title">Navigation</h5>
+                    </div>
+                    <div class="card-text content">
+                        <ul class="list-group">
+                            <li class="list-item-group"><a href="home.html">Home</a></li>
+                            <li class="list-item-group"><a href="#">Dashboard</a></li>
+                            <li class="list-item-group">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    My courses
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="course_details.html">11645</a>
+                                    <a class="dropdown-item" href="course_details.html">11658</a>
+                                    <a class="dropdown-item" href="course_details.html">11659</a>
+                                </div>
+                            </li>
+
+
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="container">
+                <div class="row">
+                    <form>
+                        <label>Search course</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter course name">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-secondary btn-sm">Применить</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row"><h2>My courses</h2></div>
+                <div class="row">
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <div class="form-group">
+                                <a class="jumb-a" href="course_details.html"><img src="https://dl.iitu.kz/theme/image.php/classic/core/1602665137/i/course"> 11645 OperatIng Systems (Сапакова С.З.) 2020-2021/1</a>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-item-group">Teacher:<a href="#"> Zhansaya Bekaulova</a></li>
+                                <li class="list-item-group">Teacher:<a href="#"> Saya Sapakova</a></li>
+                                <li class="list-item-group">Teacher:<a href="#"> Karakoz Teshebayeva</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <div class="form-group">
+                                <a class="jumb-a" href="#">
+                                    <img src="https://dl.iitu.kz/theme/image.php/classic/core/1602665137/i/course"> 11647 Web-technologIes (Мукажанов Н.К.) 2020-2021/1
+                                </a>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-item-group">Teacher:<a href="#"> Nursultan Alpysbay</a></li>
+                                <li class="list-item-group">Teacher:<a href="#"> Nurzhan Mukazhanov</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container">
+                            <div class="form-group">
+                                <a class="jumb-a" href="#">
+                                    <img src="https://dl.iitu.kz/theme/image.php/classic/core/1602665137/i/course">11667 ArchItecture and OrganIzatIon of Computer Systems (Coursera КИИБ) 2020-2021/1
+                                </a>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-item-group">Teacher:<a href="#"> Madina Ipalakova</a></li>
+                                <li class="list-item-group">Teacher:<a href="#"> Nurgul Nalgozhina</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Course</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
