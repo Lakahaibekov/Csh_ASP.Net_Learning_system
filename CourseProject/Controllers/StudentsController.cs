@@ -41,7 +41,7 @@ namespace CourseProject.Controllers
         public ActionResult Create()
         {
             ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name");
-            ViewBag.ParentId = new SelectList(db.Parents, "Id", "Login");
+            ViewBag.ParentId = new SelectList(db.Parents, "Id", "Name");
             return View();
         }
 
@@ -60,7 +60,7 @@ namespace CourseProject.Controllers
             }
 
             ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name", student.GroupId);
-            ViewBag.ParentId = new SelectList(db.Parents, "Id", "Login", student.ParentId);
+            ViewBag.ParentId = new SelectList(db.Parents, "Id", "Name", student.ParentId);
             return View(student);
         }
 
@@ -77,7 +77,7 @@ namespace CourseProject.Controllers
                 return HttpNotFound();
             }
             ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name", student.GroupId);
-            ViewBag.ParentId = new SelectList(db.Parents, "Id", "Login", student.ParentId);
+            ViewBag.ParentId = new SelectList(db.Parents, "Id", "Name", student.ParentId);
             return View(student);
         }
 
@@ -95,7 +95,7 @@ namespace CourseProject.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name", student.GroupId);
-            ViewBag.ParentId = new SelectList(db.Parents, "Id", "Login", student.ParentId);
+            ViewBag.ParentId = new SelectList(db.Parents, "Id", "Name", student.ParentId);
             return View(student);
         }
 

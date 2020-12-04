@@ -40,7 +40,7 @@ namespace CourseProject.Controllers
         // GET: Groups/Create
         public ActionResult Create()
         {
-            ViewBag.AdviserId = new SelectList(db.Teachers, "Id", "Login");
+            ViewBag.AdviserId = new SelectList(db.Teachers, "Id", "Name");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace CourseProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AdviserId = new SelectList(db.Teachers, "Id", "Login", group.AdviserId);
+            ViewBag.AdviserId = new SelectList(db.Teachers, "Id", "Name", group.AdviserId);
             return View(group);
         }
 
@@ -74,7 +74,7 @@ namespace CourseProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AdviserId = new SelectList(db.Teachers, "Id", "Login", group.AdviserId);
+            ViewBag.AdviserId = new SelectList(db.Teachers, "Id", "Name", group.AdviserId);
             return View(group);
         }
 
@@ -91,7 +91,7 @@ namespace CourseProject.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.AdviserId = new SelectList(db.Teachers, "Id", "Login", group.AdviserId);
+            ViewBag.AdviserId = new SelectList(db.Teachers, "Id", "Name", group.AdviserId);
             return View(group);
         }
 

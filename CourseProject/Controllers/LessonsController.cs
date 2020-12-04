@@ -42,7 +42,7 @@ namespace CourseProject.Controllers
         {
             ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name");
             ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name");
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Login");
+            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Name");
             return View();
         }
 
@@ -62,7 +62,7 @@ namespace CourseProject.Controllers
 
             ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", lesson.CourseId);
             ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name", lesson.GroupId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Login", lesson.TeacherId);
+            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Name", lesson.TeacherId);
             return View(lesson);
         }
 
@@ -80,7 +80,7 @@ namespace CourseProject.Controllers
             }
             ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", lesson.CourseId);
             ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name", lesson.GroupId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Login", lesson.TeacherId);
+            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Name", lesson.TeacherId);
             return View(lesson);
         }
 
@@ -99,7 +99,7 @@ namespace CourseProject.Controllers
             }
             ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", lesson.CourseId);
             ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name", lesson.GroupId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Login", lesson.TeacherId);
+            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "Name", lesson.TeacherId);
             return View(lesson);
         }
 

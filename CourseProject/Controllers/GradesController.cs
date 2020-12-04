@@ -18,7 +18,8 @@ namespace CourseProject.Controllers
         // GET: Grades
         public async Task<ActionResult> Index()
         {
-            var grades = db.Grades.Include(g => g.Lesson).Include(g => g.Student);
+            var grades = db.Grades.Include(g => g.Lesson.Course).Include(g => g.Lesson.Teacher).Include(g => g.Student);
+
             return View(await grades.ToListAsync());
         }
 
@@ -41,7 +42,7 @@ namespace CourseProject.Controllers
         public ActionResult Create()
         {
             ViewBag.LessonId = new SelectList(db.Lessons, "Id", "Id");
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "Login");
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name");
             return View();
         }
 
@@ -60,7 +61,7 @@ namespace CourseProject.Controllers
             }
 
             ViewBag.LessonId = new SelectList(db.Lessons, "Id", "Id", grade.LessonId);
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "Login", grade.StudentId);
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", grade.StudentId);
             return View(grade);
         }
 
@@ -77,7 +78,7 @@ namespace CourseProject.Controllers
                 return HttpNotFound();
             }
             ViewBag.LessonId = new SelectList(db.Lessons, "Id", "Id", grade.LessonId);
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "Login", grade.StudentId);
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", grade.StudentId);
             return View(grade);
         }
 
@@ -95,7 +96,7 @@ namespace CourseProject.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.LessonId = new SelectList(db.Lessons, "Id", "Id", grade.LessonId);
-            ViewBag.StudentId = new SelectList(db.Students, "Id", "Login", grade.StudentId);
+            ViewBag.StudentId = new SelectList(db.Students, "Id", "Name", grade.StudentId);
             return View(grade);
         }
 
