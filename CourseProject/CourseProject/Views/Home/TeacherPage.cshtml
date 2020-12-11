@@ -1,0 +1,118 @@
+﻿@model CourseProject.Models.LessonListViewModel
+
+@{
+    ViewBag.Title = "TeacherPage";
+}
+
+<div class="card mt-3 mb-3" id="header_card">
+    <div class="card-body">
+        <div class="form-group">
+            <div class="row" style="padding-left: 20px;">
+                <img src="https://dl.iitu.kz/theme/image.php/classic/core/1602665137/u/f1" width="100" height="100" style="border-radius: 50%">
+
+                @foreach (var item in Model.Lessons)
+                {
+            <h2 style="padding-left: 20px; padding-top: 25px;">@item.Teacher.Name @item.Teacher.Surname (@item.Teacher.Login)</h2>
+                    break;
+                }
+            </div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color: white">
+                    <li class="breadcrumb-item"><a href="#">Teacher Page</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <div class="container">
+                <div class="row">
+                    <div class="card-body p-3">
+                        <h5 class="card-title">Navigation</h5>
+                    </div>
+                    <div class="card-text content">
+                        <ul class="list-group">
+                            <li class="list-item-group"><a href="#">Dashboard</a></li>
+                            <li class="list-item-group"><a href="#">Teacher Page</a></li>
+                            <li class="list-item-group">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    My Lessons
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @foreach (var item in Model.Lessons) { 
+                                        <a class="dropdown-item" href="/Home/LessonDetails/?lessonId=@item.Id">@item.Course.Name @item.Group.Name</a>
+                                     }
+                                </div>
+                            </li>
+                        </ul>
+
+                        <form method="get" action="/Home/TeacherPage/">
+                            <div class="form-inline">
+                                <label class="control-label">Teacher: </label>
+                                @Html.DropDownList("Teacher", Model.Teachers as SelectList,
+                                        htmlAttributes: new { @class = "form-control" })
+
+                                <input type="submit" value="Фильтр" class="btn btn-default" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="container">
+                <div class="row">
+                    <form>
+                        <label>Поиск курса</label>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Enter course name">
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-secondary btn-sm">Применить</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="row"><h2><img src="https://dl.iitu.kz/theme/image.php/classic/core/1602665137/i/course"> My Lessons</h2></div>
+                <div class="row">
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Course name</th>
+                                <th scope="col">Group</th>
+                                <th width="20%" scope="col">Operation</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model.Lessons)
+                            {
+                                <tr>
+                                    <th><a href="#">@item.Course.Name</a></th>
+                                    <td><strong>@item.Group.Name</strong> </td>
+                                    <td width="20%">
+                                        <form action="/Home/LessonDetails/" method="get">
+                                            <input type="hidden" name="lessonId" value="@item.Id" />
+                                            <button type="submit" style="float: right" class="btn btn-primary">Lesson Details</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

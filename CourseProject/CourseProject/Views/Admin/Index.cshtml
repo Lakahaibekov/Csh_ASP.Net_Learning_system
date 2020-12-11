@@ -1,0 +1,23 @@
+﻿@model IEnumerable < CourseProject.Models.Course>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div>
+    <h3>Kundelik.kz</h3>
+    <table>
+        <tr>
+            <td><p>Course Name</p></td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td><p>@item.Name</p></td>
+            </tr>
+        }
+    </table>
+</div>
+@section Footer {
+    Все права защищены. Syte Corp. 2012.
+}

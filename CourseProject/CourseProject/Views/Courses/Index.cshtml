@@ -1,0 +1,119 @@
+﻿@model IEnumerable<CourseProject.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="card mt-3 mb-3" id="header_card">
+    <div class="card-body">
+        <h2>Kundelik.kz</h2>
+        <a href="index.html">Начало</a>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-2">
+            <div class="card-body p-3">
+                <h5 class="card-title">Admin page</h5>
+            </div>
+            <div class="card-text content">
+                <ul class="list-group">
+                    <li class="list-item-group">
+                        <a href="/Courses/Index"><i class="fa fa-book" aria-hidden="true"></i> Courses</a>
+                    </li>
+                    <li class="list-item-group">
+                        <a href="/Teachers/Index"><i class="fas fa-user-plus" aria-hidden="true"></i> Teachers</a>
+                    </li>
+                    <li class="list-item-group">
+                        <a href="/Parents/Index"><i class="fa fa-user" aria-hidden="true"></i> Parents</a>
+                    </li>
+                    <li class="list-item-group">
+                        <a href="/Groups/Index"><i class="fa fa-users" aria-hidden="true"></i> Groups</a>
+                    </li>
+                    <li class="list-item-group">
+                        <a href="/Students/Index"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Students</a>
+                    </li>
+                    <li class="list-item-group">
+                        <a href="/Lessons/Index"><i class="fab fa-discourse" aria-hidden="true"></i> Lessons</a>
+                    </li>
+                    <li class="list-item-group">
+                        <a href="/Grades/Index"><i class="far fa-copyright" aria-hidden="true"></i> Grades</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-9">
+            <div class="container">
+                <nav class="navbar navbar" style="background-color: white">
+                    <h2>Courses</h2>
+                    <p>@Html.ActionLink("Add Course", "Create", "Courses", new { }, new { @class = "viewDialog btn btn-success", data_dialog_title = "Add course" })</p>
+
+                </nav>
+                <div class="row">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col" width="5%">ID</th>
+                                <th scope="col" width="80%">Course name</th>
+                                <th scope="col" width="15%">Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (CourseProject.Models.Course c in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@c.Id</th>
+                                    <td>@c.Name </td>
+                                    <td width="15%">
+                                        @Html.ActionLink("Edit", "Edit", "Courses", new { id = c.Id },
+            new { @class = "viewDialog btn btn-primary btn-sm", data_dialog_title = "Edit course" }) 
+                                        @Html.ActionLink("Delete", "Delete", "Courses", new { id = c.Id },
+            new { @class = "viewDialog btn btn-danger btn-sm", data_dialog_title = "Delete course" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src='@Url.Content("~/Scripts/jquery-3.4.1.min.js")' type="text/javascript"></script>
+<script src='@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")' type="text/javascript"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $.ajaxSetup({ cache: false });
+
+        $(".viewDialog").on("click", function (e) {
+            e.preventDefault();
+
+            $("<div></div>")
+                .addClass("dialog")
+                .appendTo("body")
+                .dialog({
+                    title: $(this).attr("data-dialog-title"),
+                    close: function () { $(this).remove() },
+                    modal: true,
+                    heigh: 500,
+                    width: 400
+                })
+                .load(this.href);
+        });
+    });
+
+</script>

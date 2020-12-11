@@ -1,0 +1,2 @@
+C:\Users\7777\Desktop\IITU\3 course\Microsoft .NET Framework, ApplicatIon Dev FoundatIon\CourseProject\UnitTestProject.Tests\obj\Debug\UnitTestProject.Tests.csprojAssemblyReference.cache
+C:\Users\7777\Desktop\IITU\3 course\Microsoft .NET Framework, ApplicatIon Dev FoundatIon\CourseProject\UnitTestProject.Tests\obj\Debug\UnitTestProject.Tests.csproj.CoreCompileInputs.cache
