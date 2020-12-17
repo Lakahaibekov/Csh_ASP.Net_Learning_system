@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Модель добавлена</h2>
+<script>
+    $(document).ready(function () {
+        setTimeout(function() {
+            window.location.href = "@Url.Action("Index", "Courses")";
+        }, 2000);
+    })
+</script>
